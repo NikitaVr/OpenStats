@@ -34,6 +34,7 @@ plot(x,y, main="Standard Normal Distribution")
 plot(x,y, type='l', main="Standard Normal Distribution Connected")
 y <- dnorm(x, mean=2.5, sd=0.2)
 plot(x,y, main="SND mean 2.5 , standard deviation 0.2")
+lines(x,y, type="l")# lines adds to the existing plot without making a new one
 ```
 
 ### Problems
