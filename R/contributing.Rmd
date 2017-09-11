@@ -25,4 +25,6 @@ To be added shortly
 
 [TeX Support](http://rmarkdown.rstudio.com/authoring_pandoc_markdown.html#math)
 
+[Plotly Advanced Graphs in R Markdown](https://plot.ly/r/knitr/)
+
 [Layout Dashboard](http://rmarkdown.rstudio.com/flexdashboard/layouts.html)
