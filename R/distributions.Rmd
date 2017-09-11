@@ -1,0 +1,105 @@
+---
+title: "Distributions"
+author: "NikitaVr"
+date: "September 9, 2017"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Contents{#contents}
+
+#### [Normal Distribution](#normalDistribution)
+#### [Binomial Distribution](#binomialDistribution)
+#### [Chi Squared Distribution](#chiSquaredDistribution)
+#### [Student's t Distribution](#tDistribution)
+#### [F Distribution](#fDistribution)
+
+## Normal Distribution {#normalDistribution}
+
+[contents](#contents)
+
+### dnorm
+
+```{r normalDistribution}
+x <- seq(-5, 5, by=0.1)
+y <- dnorm(x)
+plot(x,y, main="Standard Normal Distribution")
+plot(x,y, type='l', main="Standard Normal Distribution Connected")
+y <- dnorm(x, mean=2.5, sd=0.2)
+plot(x,y, main="SND mean 2.5 , standard deviation 0.2")
+```
+
+### Problems
+
+1. Let X ~ N(5,3). Find P(X < 6)
+
+```{r normalProblem1}
+pnorm(6, mean=5, sd=sqrt(3))
+```
+
+2. Find P(4 < X < 6)
+
+```{r normalProblem2}
+pnorm(6, mean=5, sd=sqrt(3)) - pnorm(4, mean=5, sd=sqrt(3))
+```
+
+## Binomial Distribution {#binomialDistribution}
+[contents](#contents)
+```{r binomialDistribution}
+x <- seq(0, 50, by=1)
+y <- dbinom(x, size=50, prob=0.2)
+plot(x,y, main="Binomial Distribution size 50, probability 0.2")
+y <- dbinom(x, size=50, prob=0.6)
+plot(x,y, main="Binomial Distribution size 50, probability 0.6")
+y <- dbinom(x, size=100, prob=0.6)
+plot(x,y, main="Binomial Distribution size 100, probability 0.6")
+```
+
+## Chi Squared Distribution {#chiSquaredDistribution}
+[contents](#contents)
+```{r chiSquaredDistribution}
+x <- seq(0, 40, by=0.1)
+y <- dchisq(x,1)
+plot(x,y, main=" Chi Squared with 1 Degree of Freedom")
+y <- dchisq(x,4)
+plot(x,y, main=" Chi Squared with 4 Degree of Freedom")
+y <- dchisq(x,10)
+plot(x,y, main=" Chi Squared with 10 Degrees of Freedom")
+y <- dchisq(x,20)
+plot(x,y, main=" Chi Squared with 20 Degrees of Freedom")
+```
+
+## Student's t Distribution {#tDistribution}
+[contents](#contents)
+
+Note the tails are heavier then that of the normal distribution
+
+```{r tDistribution}
+x <- seq(-5, 5, by=0.1)
+y <- dt(x, 1)
+plot(x,y, main="t Distribution with 1 Degree of Freedom")
+y <- dt(x, 10)
+plot(x,y, main="t Distribution with 10 Degrees of Freedom")
+y <- dt(x, 10000)
+plot(x,y, main="t Distribution with 10000 Degrees of Freedom")
+```
+
+## F Distribution {#fDistribution}
+[contents](#contents)
+
+```{r fDistribution}
+x <- seq(0, 10, by=0.05)
+y <- df(x, 1, 1)
+plot(x,y, main="F Distribution with 1 and 1 Degrees of Freedom")
+y <- df(x, 100, 1)
+plot(x,y, main="F Distribution with 100 and 1 Degrees of Freedom")
+y <- df(x, 1, 100)
+plot(x,y, main="F Distribution with 1 and 100 Degrees of Freedom")
+y <- df(x, 100, 100)
+plot(x,y, main="F Distribution with 100 and 100 Degrees of Freedom")
+```
