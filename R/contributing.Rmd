@@ -1,0 +1,28 @@
+---
+title: "contributing"
+author: "NikitaVr"
+date: "September 11, 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Contributing
+
+[Home](index.html)
+
+## Guidelines
+
+To be added shortly
+
+## Useful Links
+
+[R Markdown Authoring Basics](http://rmarkdown.rstudio.com/authoring_basics.html)
+
+[Websites With R Markdown](http://rmarkdown.rstudio.com/rmarkdown_websites.html)
+
+[TeX Support](http://rmarkdown.rstudio.com/authoring_pandoc_markdown.html#math)
+
+[Layout Dashboard](http://rmarkdown.rstudio.com/flexdashboard/layouts.html)

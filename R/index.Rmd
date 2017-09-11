@@ -10,4 +10,5 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Contents
 
+### [Contributing](contributing.html)
 ### [Distributions](distributions.html)
