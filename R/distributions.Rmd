@@ -11,6 +11,8 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+[Home](index.html)
+
 ## Contents{#contents}
 
 #### [Normal Distribution](#normalDistribution)
