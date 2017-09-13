@@ -1,0 +1,185 @@
+---
+knit: (function(inputFile, encoding) { 
+      out_dir <- '../../docs/examples';
+      rmarkdown::render(inputFile,
+                        encoding=encoding, 
+                        output_file=file.path(dirname(inputFile), out_dir, 'twoSampletTest.html')) })
+                        
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Two Sample t Test
+
+[Home](../index.html) | [Examples](examples.html)
+
+## Problem
+
+Example Adapted from: https://onlinecourses.science.psu.edu/stat500/node/50
+
+We are given two sets of samples. `new` and `old`. What we want to do is figure out if there is a difference in the mean of their distributions. More accurately, whether the mean of `new` is greater than the mean of `old`.
+
+```{r twoSampletTest1}
+new = c(42.1, 41.3, 42.4, 43.2, 41.8, 41.0, 41.8, 42.8, 42.3, 42.7) # Create a vector of samples
+new # Display the vector to the console
+old = c(42.7, 43.8, 42.5, 43.1, 44.0, 43.6, 43.3, 43.5, 41.7, 44.1)
+old
+n1 = length(new)
+n2 = length(old)
+```
+
+## Sample Mean
+
+New Sample Mean: $\bar{x}_1 = \frac{1}{n_1} \sum_{i=1}^{n_1} X_{i-new}$
+
+Old Sample Mean: $\bar{x}_2 = \frac{1}{n_2} \sum_{i=1}^{n_2} X_{i-old}$
+
+```{r twoSampletTest2}
+newSampleMean = sum(new)/n1 # Using the equation for sample mean
+newSampleMean
+newSampleMean <- mean(new) # Easier to just use the R function
+newSampleMean
+oldSampleMean = mean(old)
+oldSampleMean
+```
+
+$\bar{x}_1 = 42.14$ and $\bar{x}_2 = 43.23$
+
+## Sample Variance and Standard Deviation
+
+$\sigma_1^2 = \frac{1}{n_1 - 1} \sum_{i=1}^{n_1} (\bar{x}_1 - X_{i-new})$
+
+$\sigma_2^2 = \frac{1}{n_2 - 1} \sum_{i=1}^{n_2} (\bar{x}_2 - X_{i-old})$
+
+```{r twoSampletTest3}
+newSampleVariance = sum( (newSampleMean - new) ^ 2 )/(n1 - 1) # Using Formula
+newSampleVariance
+newSampleVariance <- var(new) # Using R function
+newSampleVariance
+newStandardDeviation = sqrt(newSampleVariance)
+newStandardDeviation
+oldSampleVariance = var(old)
+oldSampleVariance
+oldStandardDeviation = sqrt(oldSampleVariance)
+oldStandardDeviation
+```
+
+New Sample Variance: $\sigma_1^2 = 0.4671111$
+
+New Standard Deviation: $\sigma_1 = 0.6834553$
+
+Old Sample Variance: $\sigma_2^2 = 0.5623333$
+
+Old Standard Deviation: $\sigma_2 = 0.7498889$
+
+## Verify Normality
+
+In order to be able to use the Two Sample t Test we need to verify that both samples follow a normal distribution. 
+
+The following graphs show how closely the points line up on the actual normal distribution, they should fit as closely as possible.
+
+The dotted lines represent the bounds for a 95% confidence interval. As we can see none of the points fall outside the 95% CI, meaning we can be confident that `old` and `new` come from a normal population.
+
+
+```{r twoSampletTest4}
+library(car) # Importing the car library which includes qqPlot
+qqPlot(new)
+qqPlot(old)
+```
+
+## Comparing Variance
+
+In order to use the pooled t-test we must make sure the variance of the two samples is not too different. 
+
+We compare the standard deviations, and want them to have a ratio between 0.5 and 2 (Elaborate more on why this is the case).
+
+```{r twoSampletTest5}
+newStandardDeviation/oldStandardDeviation
+```
+
+The standard deviation ratio is within 0.5 and 2, therefore we can perform the pooled t-test
+
+## Pooled t-test
+
+### Hypothesis
+
+Let $\mu_1$ be the mean of `new` and $\mu_2$ be the mean of `old`
+
+Then the hypotheses are:
+
+$H_0 : \mu_1 - \mu_2 = 0,$
+
+$H_a : \mu_1 - \mu_2 < 0$
+
+### Significance Level
+
+$\alpha = 0.05$
+
+```{r setAlpha}
+alpha = 0.05
+```
+
+### Compute the t-statistic
+
+Estimate the common standard deviation using the pooled standard deviation:
+
+$$s_p = \sqrt{\frac{(n_1 - 1)s_1^2 + (n_2 - 1)s_2^2}{n_1 + n_2 - 2}} $$
+
+Test Statistic:
+
+$$ t^* = \frac{\bar{x_1} - \bar{x_2}}{s_p\sqrt{\frac{1}{n_1} + \frac{1}{n_2}}}$$
+
+with degrees of freedom $df = n_1 + n_2 - 2$
+
+Plug in the variables:
+
+$$s_p = \sqrt{\frac{(10 - 1)(0.6834553) + (10 - 1)(0.7498889)}{10 + 10 - 2}} $$
+
+```{r twoSampletTest6}
+sp = sqrt(((n1 - 1) * newSampleVariance + (n2 - 1) * oldSampleVariance)/(n1 + n2 - 2))
+sp
+```
+
+$sp = 0.7174414$
+
+$$ t^* = \frac{42.14 - 43.23}{(0.7174414)\sqrt{\frac{1}{10} + \frac{1}{10}}}$$
+
+```{r twoSampletTest7}
+tStatistic = (newSampleMean - oldSampleMean)/(sp * sqrt(1/n1 + 1/n2))
+tStatistic
+```
+
+$t^* = -3.397231$
+
+### Critical Value
+
+Left Tailed Test (Explain why)
+
+Critical Value: $-t_{\alpha} = -t_{0.05}$
+
+Degrees of Freedom = $df = n1 + n2 - 2 = 10 + 10 - 2 = 18$
+
+```{r twoSampletTest8}
+df = n1 + n2 - 2
+criticalValue = qt(alpha, df)
+criticalValue
+```
+
+Rejection Region $t* < -1.734064
+
+### Check Test Statistic vs Rejection Region
+
+$t^* = -3.397231 < -1.734064$
+
+```{r twoSampletTest9}
+tStatistic < criticalValue
+```
+
+Therefore we reject $H_0$ at $\alpha = 0.05$
+
+### Conclusion 
+
+Therefore at the 5% significance level the mean of `new` is greater than the mean of `old`

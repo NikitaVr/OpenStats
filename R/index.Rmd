@@ -18,3 +18,4 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ### [Contributing](contributing/contributing.html)
 ### [Distributions](distributions/distributions.html)
+### [Examples](examples/examples.html)
