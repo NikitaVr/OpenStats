@@ -1,8 +1,4 @@
 ---
-title: "contributing"
-author: "NikitaVr"
-date: "September 11, 2017"
-
 knit: (function(inputFile, encoding) { 
       out_dir <- '../../docs/contributing';
       rmarkdown::render(inputFile,
@@ -17,8 +13,6 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 # Contributing
-
-some new stuff
 
 [Home](../index.html)
 

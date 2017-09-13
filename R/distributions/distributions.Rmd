@@ -1,8 +1,4 @@
 ---
-title: "Distributions"
-author: "NikitaVr"
-date: "September 9, 2017"
-
 knit: (function(inputFile, encoding) { 
       out_dir <- '../../docs/distributions';
       rmarkdown::render(inputFile,
@@ -18,9 +14,13 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+# Distributions
+
 [Home](../index.html)
 
 ## Contents{#contents}
+
+
 
 #### [Normal Distribution](#normalDistribution)
 #### [Binomial Distribution](#binomialDistribution)
