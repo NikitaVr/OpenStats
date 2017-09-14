@@ -1,0 +1,15 @@
+---
+knit: (function(inputFile, encoding) { 
+      out_dir <- '../../docs/linearRegression';
+      rmarkdown::render(inputFile,
+                        encoding=encoding, 
+                        output_file=file.path(dirname(inputFile), out_dir, 'linearRegression.html')) })
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Linear Regression
+
+[Home](../index.html)

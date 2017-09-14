@@ -32,7 +32,18 @@ knitr::opts_chunk$set(echo = TRUE)
 
 [contents](#contents)
 
-### dnorm
+### Probability Density
+
+The Probability Density Function of the normal distribution is:
+
+$$ f(x | \mu,\sigma^2) = \frac{1}{\sqrt{2\pi\sigma^2}}e^{-\frac{(x-\mu)^2}{2\sigma^2}}$$
+Where:
+
+ - $\mu$ is the [mean](https://en.wikipedia.org/wiki/Mean) or [expectation](https://en.wikipedia.org/wiki/Expected_value) of the distribution
+  
+ - $\sigma$ is the [standard deviation](https://en.wikipedia.org/wiki/Standard_deviation)
+  
+ - $\sigma^2$ is the [variance](https://en.wikipedia.org/wiki/Variance)
 
 ```{r normalDistribution}
 x <- seq(-5, 5, by=0.1)
@@ -42,6 +53,14 @@ plot(x,y, type='l', main="Standard Normal Distribution Connected")
 y <- dnorm(x, mean=2.5, sd=0.2)
 plot(x,y, main="SND mean 2.5 , standard deviation 0.2")
 lines(x,y, type="l")# lines adds to the existing plot without making a new one
+```
+
+### Cumulative Distribution
+
+```{r normalDistributionCDF}
+x = seq(-2, 2, by=0.01)
+y = pnorm(x)
+plot(x,y, main="Standard Normal Cumulative Distribution Function", type="l")
 ```
 
 ### Problems
@@ -72,6 +91,16 @@ plot(x,y, main="Binomial Distribution size 100, probability 0.6")
 
 ## Chi Squared Distribution {#chiSquaredDistribution}
 [contents](#contents)
+
+Let $X_1,X_2,...,X_n$ be independant and identically distributed random variables with an $\mathcal{N}(0,1)$ distribution (Standard Normal)
+
+The Chi Square relates to the normal distribution in the following way:
+
+$$ \sum_{i=1}^{n} X_i^2$$
+
+has a $\chi^2$ distribution with n degrees of freedom and a variance of 2n
+
+
 ```{r chiSquaredDistribution}
 x <- seq(0, 40, by=0.1)
 y <- dchisq(x,1)
