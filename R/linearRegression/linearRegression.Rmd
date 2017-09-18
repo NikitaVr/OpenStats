@@ -13,3 +13,8 @@ knitr::opts_chunk$set(echo = TRUE)
 # Linear Regression
 
 [Home](../index.html)
+
+## Contents
+
+### [Intro](linearRegressionIntro.html)
+### [Least Squares Estimators](leastSquaresEstimators.html)

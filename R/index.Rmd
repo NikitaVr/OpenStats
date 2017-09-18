@@ -17,6 +17,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ## Contents
 
 ### [Contributing](contributing/contributing.html)
+### [Probability](probability/probability.html)
 ### [Distributions](distributions/distributions.html)
 ### [Linear Regression](linearRegression/linearRegression.html)
 ### [Examples](examples/examples.html)
