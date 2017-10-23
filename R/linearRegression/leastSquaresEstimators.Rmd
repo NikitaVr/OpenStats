@@ -13,4 +13,4 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Least Squares Estimators
 
-[Home](../index.html) | [Linear Regression](linearRegression.html)
+[Home](../index.html) | [Linear Regression](linearRegression.html) | [Previous](linearRegressionIntro.html)

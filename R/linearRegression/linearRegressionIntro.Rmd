@@ -14,3 +14,45 @@ knitr::opts_chunk$set(echo = TRUE)
 # Linear Regression Intro
 
 [Home](../index.html) | [Linear Regression](linearRegression.html)
+
+We have data points $(x_i, y_i)$, where each $x_i$ corresponds to a $y_i$.
+
+The goal is to fit a line that represents the underlying trend in the data.
+
+We can form a model the following way:
+
+$$ y_i = \beta_0 + \beta_1x_i + \epsilon_i$$
+
+Where:
+
+ - $i \in \{1,...,n\}$
+ - $y_i$ is the ith output value
+ - $x_i$ is the ith input value
+ - $\beta_0$ is the y-intercept
+ - $\beta_1$ is the rate of change (or slope)
+ - $\epsilon_i$ is the ith error
+    - $\epsilon_i ~ \mathcal{N}(0, \sigma^2)$ (mean 0 and variance $\sigma^2$)
+    - it is the difference between the predicted value $\hat{y}_i = \beta_0 + \beta_1x_i$ and the actual value $y_i$
+    
+We will later on show how to find $\beta_0$ and $\beta_1$
+    
+Here is a sample of linear regression with R.
+
+Y is set to be a vector of Y values and X is set to be a vector of X values
+
+c(...) creates a vector of the given values
+
+" <- " is the assignment operator, similar to " = " in other programming languages such as python.
+    
+```{r linearRegression}
+Y <- c(102.5, 104.5, 100.4, 95.9, 87.0, 95.0, 88.6, 89.2,
+78.9, 84.6, 81.7, 72.2, 65.1, 68.1, 67.3, 52.5)
+X <- c(51.3, 49.9, 50.0,49.2, 48.5, 47.8, 47.3, 45.1,
+46.3, 42.1, 44.2, 43.5, 42.3, 40.2, 31.8, 34.0)
+plot(X,Y,xlab="x",ylab="y")
+myFit <- lm(Y~X) # M is the response variable and T the predictor
+abline(myFit) # Add regression line to the plot
+
+```
+
+### [Next](leastSquaresEstimators.html)
