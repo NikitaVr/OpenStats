@@ -17,3 +17,5 @@ knitr::opts_chunk$set(echo = TRUE)
 [Home](../index.html)
 
 ## [Two Sample t-test](twoSampletTest.html)
+
+## [Misc](misc.html)
