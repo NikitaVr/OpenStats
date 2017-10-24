@@ -15,9 +15,13 @@ knitr::opts_chunk$set(echo = TRUE)
 
 [Home](../index.html) | [Linear Regression](linearRegression.html)
 
+## Idea
+
 We have data points $(x_i, y_i)$, where each $x_i$ corresponds to a $y_i$.
 
 The goal is to fit a line that represents the underlying trend in the data.
+
+## Model 1
 
 We can form a model the following way:
 
@@ -35,7 +39,17 @@ Where:
     - it is the difference between the predicted value $\hat{y}_i = \beta_0 + \beta_1x_i$ and the actual value $y_i$
     
 We will later on show how to find $\beta_0$ and $\beta_1$
-    
+
+## Model 2
+
+We can otherwise write our model the following way:
+
+$$ \mathbf{E}(Y|X=x) = \beta_0 + \beta_1x$$
+
+$$ var(Y|X=x) = \sigma^2$$
+
+## R Sample
+
 Here is a sample of linear regression with R.
 
 Y is set to be a vector of Y values and X is set to be a vector of X values
